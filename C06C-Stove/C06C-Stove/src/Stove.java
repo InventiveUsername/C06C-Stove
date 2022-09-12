@@ -15,6 +15,8 @@ public class Stove {
 	
 	private Setting pickSetting; // Created Setting instance;
 	
+	private boolean burningHot = false;
+	
 	/** 
 	 * Constructor for the stove
 	 * Set up the burners
@@ -32,11 +34,21 @@ public class Stove {
 	 **** You must write the following method ****
 	 */
 	public void displayStove() {
+		burningHot = false;
 		
-		burners.get(0).display();
-		burners.get(1).display();
-		burners.get(2).display();
-		burners.get(3).display();
+		for(int i = 0; i < burners.size(); i++) {
+			burners.get(i).display();
+			
+			if(burners.get(i).getMySetting() == Setting.HIGH) { //How to access the high thing
+				burningHot = true;
+			}
+		}
+		
+		if(burningHot == true) {
+			System.out.println("RED LIGHT - HOT BURNER ALERT");
+		}
+		
+
 	}
 	
 	/**
